@@ -21,5 +21,6 @@ class ParkingBoyFacts {
     @Test
     void should_return_right_car_when_fetch_car_given_a_ticket(){
         //given
+
     }
 }
