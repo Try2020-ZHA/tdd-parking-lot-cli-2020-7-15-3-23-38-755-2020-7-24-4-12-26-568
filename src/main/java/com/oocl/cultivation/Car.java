@@ -1,6 +1,8 @@
 package com.oocl.cultivation;
 
 public class Car {
-    public Car(){
+    private String carId;
+    public Car(String carId){
+        this.carId=carId;
     }
 }
