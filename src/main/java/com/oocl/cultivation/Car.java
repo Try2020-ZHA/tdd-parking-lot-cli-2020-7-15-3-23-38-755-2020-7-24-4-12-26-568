@@ -16,12 +16,12 @@ public class Car {
         return Objects.equals(carId, car.carId);
     }
 
+    public String getCarId() {
+        return carId;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(carId);
-    }
-
-    public String getCarId() {
-        return carId;
     }
 }
