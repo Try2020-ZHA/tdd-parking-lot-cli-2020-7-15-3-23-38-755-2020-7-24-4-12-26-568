@@ -5,6 +5,9 @@ public class Customer {
     private Ticket ticket;
     private ParkingBoy parkingBoy;
     public Customer(Ticket ticket,ParkingBoy parkingBoy){
+        if(ticket==null){
+            parkingBoy.notifyTheCustomer(this,"Not enough position.");
+        }
         this.ticket=ticket;
         this.parkingBoy=parkingBoy;
         this.parkingBoy.attach(this);

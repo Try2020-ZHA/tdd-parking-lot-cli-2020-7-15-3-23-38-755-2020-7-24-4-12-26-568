@@ -21,13 +21,15 @@ public class ParkingBoy {
     }
 
     public Ticket parkCar(Car car,String token) {
+        Ticket ticket=new Ticket(token,car.getCarId());
         if(position<10&&car!=null&&!isAParkedCar(car)){
             ticketAndCar.put(token,car);
-            Ticket ticket=new Ticket(token,car.getCarId());
             tickets.add(ticket);
             return ticket;
         }
-        return null;
+        ticket=null;
+        notifyTheCustomer(ticket,"Not enough position.");
+        return ticket;
     }
 
     public Car fetchCar(Ticket ticket){
@@ -57,6 +59,10 @@ public class ParkingBoy {
                 return;
             }
         }
+    }
+
+    public void notifyTheCustomer(Customer customer,String message){
+        customer.setMessage(message);
     }
 
     public boolean isAParkedCar(Car car){
