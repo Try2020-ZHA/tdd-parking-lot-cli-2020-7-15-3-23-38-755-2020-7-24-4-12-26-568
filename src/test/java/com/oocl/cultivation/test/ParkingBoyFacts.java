@@ -13,7 +13,7 @@ class ParkingBoyFacts {
         ParkingBoy parkingBoy=new ParkingBoy();
         Car car=new Car("001");
         //when
-        String ticket=parkingBoy.parkCar(car);
+        Ticket ticket=parkingBoy.parkCar(car);
         //then
         Assertions.assertNotNull(ticket);
     }
