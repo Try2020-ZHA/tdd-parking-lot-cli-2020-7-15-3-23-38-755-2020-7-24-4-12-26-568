@@ -10,11 +10,17 @@ AC1: The parking boy can park a car into the parking lot and returns a parking t
 
 AC2: The parking boy can park multiple cars into on parking lot. And can fetch right car using correspond ticket.
 
-AC3: If the customer gives a wrong ticket (the parking boy does not provide the ticket) or does not give a ticket. Then no car should be fetched.
+AC3: If the customer gives a wrong ticket (the parking boy
+ does not provide the ticket) or does not give a ticket. 
+ Then no car should be fetched.
 
-AC4: If the customer gives a ticket that has already been used. Then no car should be fetched.
+AC4: If the customer gives a ticket that has already been 
+used. Then no car should be fetched.
 
-AC5: The parking lot has a capacity (the default capacity of a parking lot is 10). If there is no position, then the user cannot park the car into it. Thus (s)he will not get any ticket.
+AC5: The parking lot has a capacity (the default capacity 
+of a parking lot is 10). If there is no position, then 
+the user cannot park the car into it. Thus (s)he will 
+not get any ticket.
 
 > There are some cases which are not a requirement but may happen technically 
 >

@@ -28,4 +28,9 @@ class ParkingBoyFacts {
         //then
         Assertions.assertEquals(new Car("car001"),car);
     }
+
+    @Test
+    void should_return_null_when_fetch_car_given_a_wrong_ticket_or_given_no_ticket(){
+
+    }
 }
