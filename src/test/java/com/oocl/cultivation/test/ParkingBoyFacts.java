@@ -111,4 +111,16 @@ class ParkingBoyFacts {
         Assertions.assertEquals("Please provide your parking ticket.",customer.getMessage());
     }
 
+    @Test
+    void should_provide_error_message_when_parking_car_given_no_position(){
+        //given
+        ParkingBoy parkingBoy=new ParkingBoy();
+        parkingBoy.setPosition(10);
+        //when
+        Ticket ticket=parkingBoy.parkCar(new Car("car001"),"001");
+        Customer customer=new Customer(ticket,parkingBoy);
+        //then
+        Assertions.assertEquals("Not enough position.",customer.getMessage());
+    }
+
 }

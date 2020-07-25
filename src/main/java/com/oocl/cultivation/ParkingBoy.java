@@ -27,7 +27,6 @@ public class ParkingBoy {
             tickets.add(ticket);
             return ticket;
         }
-
         return null;
     }
 
