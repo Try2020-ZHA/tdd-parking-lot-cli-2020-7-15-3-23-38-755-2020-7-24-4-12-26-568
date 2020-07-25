@@ -50,11 +50,18 @@ The error message should be "Not enough position."
 
 ## Story 3
 
-As a parking lots service manager, I would like to have a parking boy parking cars to multiple parking lots. So that I can provide more parking positions.
+As a parking lots service manager, I would like to 
+have a parking boy parking cars to multiple parking 
+lots. So that I can provide more parking positions.
 
-AC1. The parking boy is not that clever, and he will always park cars sequentially (suppose that there are two parking lots managed by the parking boy. The parking boy will park cars to the second parking lot when the first parking lot is full).
+AC1. The parking boy is not that clever, and he will
+ always park cars sequentially (suppose that there 
+ \are two parking lots managed by the parking boy. 
+ The parking boy will park cars to the second parking 
+ lot when the first parking lot is full).
 
-AC2: All the requirement in *Story 1* and *Story 2* **MUST** be satisfied.
+AC2: All the requirement in *Story 1* and *Story 
+2* **MUST** be satisfied.
 
 ## Story 4
 

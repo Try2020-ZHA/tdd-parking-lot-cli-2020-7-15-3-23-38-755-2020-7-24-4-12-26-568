@@ -86,7 +86,7 @@ class ParkingBoyFacts {
         //given
         ParkingBoy parkingBoy=new ParkingBoy();
         Ticket ticket=parkingBoy.parkCar(new Car("car001"),"001");
-        Customer customer=new Customer();
+        Customer customer=new Customer(ticket,parkingBoy);
         //when
         Car car=parkingBoy.fetchCar(ticket);
         car=parkingBoy.fetchCar(ticket);

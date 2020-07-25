@@ -1,10 +1,13 @@
 package com.oocl.cultivation;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class ParkingBoy {
     private int position;
     private HashMap<String,Car> ticketAndCar;
+    private List<Customer> customers = new ArrayList<Customer>();
     public ParkingBoy(){
         ticketAndCar=new HashMap<>();
         position=0;
@@ -29,7 +32,25 @@ public class ParkingBoy {
                 return ticketAndCar.get(ticket.getToken());
             }
         }
+        if(ticket!=null&&ticket.isUsed()){
+            notifyTheCustomer(ticket,"Unrecognized parking ticket.");
+        }
+        if(ticket==null){
+            notifyTheCustomer(ticket,"Please provide your parking ticket.");
+        }
         return null;
+    }
+
+    public void attach(Customer customer){
+        customers.add(customer);
+    }
+
+    public void notifyTheCustomer(Ticket ticket,String message){
+        for (Customer customer : customers) {
+            if(customer.getTicket().getToken().equals(ticket.getToken())){
+                customer.setMessage(message);
+            }
+        }
     }
 
     public boolean isAParkedCar(Car car){
