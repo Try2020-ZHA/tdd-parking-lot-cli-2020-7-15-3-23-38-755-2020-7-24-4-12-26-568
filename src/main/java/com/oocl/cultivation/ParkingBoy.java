@@ -27,6 +27,7 @@ public class ParkingBoy {
             tickets.add(ticket);
             return ticket;
         }
+
         return null;
     }
 
@@ -52,8 +53,9 @@ public class ParkingBoy {
 
     public void notifyTheCustomer(Ticket ticket,String message){
         for (Customer customer : customers) {
-            if(customer!=null&&customer.getTicket().getToken().equals(ticket.getToken())){
+            if(customer!=null&&(ticket==null||ticket.getToken().equals(customer.getTicket().getToken()))){
                 customer.setMessage(message);
+                return;
             }
         }
     }
