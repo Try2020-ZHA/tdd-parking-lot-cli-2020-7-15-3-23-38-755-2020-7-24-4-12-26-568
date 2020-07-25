@@ -42,4 +42,16 @@ class ParkingBoyFacts {
         Assertions.assertNull(car);
         Assertions.assertNull(car1);
     }
+
+    @Test
+    void should_return_null_when_fetch_car_given_a_used_ticket(){
+        //given
+        Ticket ticket=new Ticket("001","car001");
+        ParkingBoy parkingBoy=new ParkingBoy();
+        parkingBoy.setUsedTicket(ticket);
+        //when
+        Car car=parkingBoy.fetchCar(ticket);
+        //then
+        Assertions.assertNull(car);
+    }
 }
