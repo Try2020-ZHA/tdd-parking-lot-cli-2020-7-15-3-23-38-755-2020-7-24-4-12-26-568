@@ -55,5 +55,16 @@ class ParkingBoyFacts {
         Assertions.assertNull(car);
     }
 
+    @Test
+    void should_return_null_when_parking_car_and_no_position_given_a_car(){
+        //given
+        Car car=new Car("car001");
+        ParkingBoy parkingBoy=new ParkingBoy();
+        //when
+        parkingBoy.setPosition(10);
+        Ticket ticket=parkingBoy.parkCar(car);
+        //then
+        Assertions.assertNull(ticket);
+    }
 
 }
