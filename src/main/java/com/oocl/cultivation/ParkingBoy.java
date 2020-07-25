@@ -4,7 +4,9 @@ import java.util.HashMap;
 
 public class ParkingBoy {
     private int position;
+    private HashMap<String,String> ticketAndCar;
     public ParkingBoy(){
+        ticketAndCar=new HashMap<>();
         position=0;
     }
 
@@ -12,19 +14,25 @@ public class ParkingBoy {
         this.position = position;
     }
 
-    public Ticket parkCar(Car car) {
-        if(position<10)
-        return new Ticket("001",car.getCarId());
+    public Ticket parkCar(Car car,String token) {
+        if(position<10&&car!=null&&!isAParkedCar(token)){
+            ticketAndCar.put(token,car.getCarId());
+            return new Ticket(token,car.getCarId());
+        }
         return null;
     }
 
     public Car fetchCar(Ticket ticket){
         if(ticket!=null&&!ticket.isUsed()){
-            if("001".equals(ticket.getToken())){
+            if(ticketAndCar.containsKey(ticket.getToken())){
                 ticket.setUsed();
-                return new Car("car001");
+                return new Car(ticketAndCar.get(ticket.getToken()));
             }
         }
         return null;
+    }
+
+    public boolean isAParkedCar(String token){
+        return ticketAndCar.containsKey(token);
     }
 }

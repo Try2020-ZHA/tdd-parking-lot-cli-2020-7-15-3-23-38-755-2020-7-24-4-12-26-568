@@ -11,9 +11,9 @@ class ParkingBoyFacts {
     void should_return_ticket_when_parking_boy_park_the_car_given_a_car() {
         //given
         ParkingBoy parkingBoy=new ParkingBoy();
-        Car car=new Car("001");
+        Car car=new Car("car001");
         //when
-        Ticket ticket=parkingBoy.parkCar(car);
+        Ticket ticket=parkingBoy.parkCar(car,"001");
         //then
         Assertions.assertNotNull(ticket);
     }
@@ -21,8 +21,9 @@ class ParkingBoyFacts {
     @Test
     void should_return_right_car_when_fetch_car_given_a_ticket(){
         //given
-        Ticket ticket=new Ticket("001","car001");
         ParkingBoy parkingBoy=new ParkingBoy();
+        parkingBoy.parkCar(new Car("car001"),"001");
+        Ticket ticket=new Ticket("001","car001");
         //when
         Car car=parkingBoy.fetchCar(ticket);
         //then
@@ -48,6 +49,7 @@ class ParkingBoyFacts {
         //given
         Ticket ticket=new Ticket("001","car001");
         ParkingBoy parkingBoy=new ParkingBoy();
+        parkingBoy.parkCar(new Car("car001"),"001");
         //when
         Car car=parkingBoy.fetchCar(ticket);
         car=parkingBoy.fetchCar(ticket);
@@ -62,9 +64,14 @@ class ParkingBoyFacts {
         ParkingBoy parkingBoy=new ParkingBoy();
         //when
         parkingBoy.setPosition(10);
-        Ticket ticket=parkingBoy.parkCar(car);
+        Ticket ticket=parkingBoy.parkCar(car,"001");
         //then
         Assertions.assertNull(ticket);
+    }
+
+    @Test
+    void should_return_null_when_parking_a_car_given_a_parked_car(){
+
     }
 
 }
