@@ -48,10 +48,12 @@ class ParkingBoyFacts {
         //given
         Ticket ticket=new Ticket("001","car001");
         ParkingBoy parkingBoy=new ParkingBoy();
-        parkingBoy.setUsedTicket(ticket);
         //when
         Car car=parkingBoy.fetchCar(ticket);
+        car=parkingBoy.fetchCar(ticket);
         //then
         Assertions.assertNull(car);
     }
+
+
 }
