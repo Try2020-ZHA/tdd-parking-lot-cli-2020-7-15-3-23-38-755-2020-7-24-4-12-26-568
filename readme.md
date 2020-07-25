@@ -29,13 +29,24 @@ not get any ticket.
 
 ## Story 2
 
-As a customer, I would like to get some response message from the parking boy when I cannot fetch the car. So that I can know what happens.
+As a customer, I would like to get some response 
+message from the parking boy when I cannot 
+fetch the car. So that I can know what happens.
 
-AC1: When the customer gives a wrong ticket (the parking boy does not provide the ticket / the ticket has been used). Then no car should be fetched. If I query the error message, I can get an "Unrecognized parking ticket.".
+AC1: When the customer gives a wrong ticket 
+(the parking boy does not provide the ticket 
+/ the ticket has been used). Then no car should 
+be fetched. If I query the error message, I
+ can get an "Unrecognized parking ticket.".
 
-AC2: When the customer does not provide a ticket when fetching a  car. The error message should be "Please provide your parking ticket."
+AC2: When the customer does not provide 
+a ticket when fetching a  car. The error
+ message should be "Please provide your 
+ parking ticket."
 
-AC3: When the parking boy attempt to park a car into a parking lot without a position. The error message should be "Not enough position."
+AC3: When the parking boy attempt to park 
+a car into a parking lot without a position. 
+The error message should be "Not enough position."
 
 ## Story 3
 
