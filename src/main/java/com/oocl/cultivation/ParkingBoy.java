@@ -7,9 +7,12 @@ import java.util.List;
 public class ParkingBoy {
     private int position;
     private HashMap<String,Car> ticketAndCar;
-    private List<Customer> customers = new ArrayList<Customer>();
+    private List<Customer> customers ;
+    private List<Ticket> tickets ;
     public ParkingBoy(){
         ticketAndCar=new HashMap<>();
+        customers=new ArrayList<Customer>();
+        tickets= new ArrayList<Ticket>();
         position=0;
     }
 
@@ -20,7 +23,9 @@ public class ParkingBoy {
     public Ticket parkCar(Car car,String token) {
         if(position<10&&car!=null&&!isAParkedCar(car)){
             ticketAndCar.put(token,car);
-            return new Ticket(token,car.getCarId());
+            Ticket ticket=new Ticket(token,car.getCarId());
+            tickets.add(ticket);
+            return ticket;
         }
         return null;
     }
@@ -32,7 +37,7 @@ public class ParkingBoy {
                 return ticketAndCar.get(ticket.getToken());
             }
         }
-        if(ticket!=null&&ticket.isUsed()){
+        if(ticket!=null&&(ticket.isUsed()||!isExistTicket(ticket))){
             notifyTheCustomer(ticket,"Unrecognized parking ticket.");
         }
         if(ticket==null){
@@ -47,7 +52,7 @@ public class ParkingBoy {
 
     public void notifyTheCustomer(Ticket ticket,String message){
         for (Customer customer : customers) {
-            if(customer.getTicket().getToken().equals(ticket.getToken())){
+            if(customer!=null&&customer.getTicket().getToken().equals(ticket.getToken())){
                 customer.setMessage(message);
             }
         }
@@ -55,5 +60,9 @@ public class ParkingBoy {
 
     public boolean isAParkedCar(Car car){
         return ticketAndCar.containsValue(car);
+    }
+
+    public boolean isExistTicket(Ticket ticket){
+        return tickets.contains(ticket);
     }
 }

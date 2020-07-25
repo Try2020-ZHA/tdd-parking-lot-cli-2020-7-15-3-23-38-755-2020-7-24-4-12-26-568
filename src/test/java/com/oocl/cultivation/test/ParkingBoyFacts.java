@@ -86,12 +86,29 @@ class ParkingBoyFacts {
         //given
         ParkingBoy parkingBoy=new ParkingBoy();
         Ticket ticket=parkingBoy.parkCar(new Car("car001"),"001");
+        Ticket ticket1=new Ticket("002","car002");
+        Customer customer=new Customer(ticket,parkingBoy);
+        Customer customer1=new Customer(ticket1,parkingBoy);
+        //when
+        Car car=parkingBoy.fetchCar(ticket);
+        car=parkingBoy.fetchCar(ticket);
+        Car car1=parkingBoy.fetchCar(ticket1);
+        //then
+        Assertions.assertEquals("Unrecognized parking ticket.",customer.getMessage());
+        Assertions.assertEquals("Unrecognized parking ticket.",customer1.getMessage());
+    }
+
+    @Test
+    void should_provide_error_message_when_fetch_car_given_no_ticket(){
+        //given
+        ParkingBoy parkingBoy=new ParkingBoy();
+        Ticket ticket=null;
         Customer customer=new Customer(ticket,parkingBoy);
         //when
         Car car=parkingBoy.fetchCar(ticket);
         car=parkingBoy.fetchCar(ticket);
         //then
-        Assertions.assertEquals("Unrecognized parking ticket.",customer.getMessage());
+        Assertions.assertEquals("Please provide your parking ticket.",customer.getMessage());
     }
 
 }
