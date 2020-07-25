@@ -12,8 +12,10 @@ public class ParkingBoy {
     }
 
     public Car fetchCar(Ticket ticket){
-        if(ticket.getCarId().equals("car001"))
-        return new Car("car001");
+        if(ticket!=null){
+            if(ticket.getToken().equals("001"))
+                return new Car("car001");
+        }
         return null;
     }
 }

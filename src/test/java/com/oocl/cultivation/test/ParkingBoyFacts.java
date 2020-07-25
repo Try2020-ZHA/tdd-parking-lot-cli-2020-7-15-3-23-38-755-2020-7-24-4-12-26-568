@@ -33,10 +33,13 @@ class ParkingBoyFacts {
     void should_return_null_when_fetch_car_given_a_wrong_ticket_or_given_no_ticket(){
         //given
         Ticket ticket=new Ticket("002","car002");
+        Ticket ticket1=new Ticket(null,null);
         ParkingBoy parkingBoy=new ParkingBoy();
         //when
         Car car=parkingBoy.fetchCar(ticket);
+        Car car1=parkingBoy.fetchCar(ticket1);
         //then
-        Assertions.assertEquals(null,car);
+        Assertions.assertNull(car);
+        Assertions.assertNull(car1);
     }
 }

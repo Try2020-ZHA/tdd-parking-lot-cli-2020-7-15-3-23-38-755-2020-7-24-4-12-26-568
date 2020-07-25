@@ -12,4 +12,8 @@ public class Ticket {
     public String getCarId() {
         return carId;
     }
+
+    public String getToken(){
+        return token;
+    }
 }
