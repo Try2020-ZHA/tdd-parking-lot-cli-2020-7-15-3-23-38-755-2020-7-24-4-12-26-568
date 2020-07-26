@@ -96,26 +96,116 @@ class ParkingBoyFacts {
     }
 
     @Test
-    void should_provide_error_message_when_fetch_car_given_no_ticket(){
+    void should_return_ticket_when_stupid_parking_boy_park_the_car_given_a_car() {
         //given
-        ParkingBoy parkingBoy=new ParkingBoy();
-        Ticket ticket=null;
-        Customer customer=new Customer(ticket,parkingBoy);
+        StupidParkingBoy stupidParkingBoy=new StupidParkingBoy();
+        Car car=new Car("car001");
         //when
-        Car car=parkingBoy.fetchCar(ticket);
-        car=parkingBoy.fetchCar(ticket);
+        Ticket ticket=stupidParkingBoy.parkCar(car,"001");
+        //then
+        Assertions.assertNotNull(ticket);
+    }
+
+    @Test
+    void should_return_right_car_when_fetch_car_given_stupid_parking_boy_a_ticket(){
+        //given
+        StupidParkingBoy stupidParkingBoy=new StupidParkingBoy();
+        Ticket ticket=stupidParkingBoy.parkCar(new Car("car001"),"001");
+        //when
+        Car car=stupidParkingBoy.fetchCar(ticket);
+        //then
+        Assertions.assertEquals(new Car("car001"),car);
+    }
+
+    @Test
+    void should_return_null_when_fetch_car_given_a_wrong_ticket_or_given_stupid_parking_boy_no_ticket(){
+        //given
+        Ticket ticket=new Ticket("002","car002");
+        Ticket ticket1=new Ticket(null,null);
+        StupidParkingBoy stupidParkingBoy=new StupidParkingBoy();
+        //when
+        Car car=stupidParkingBoy.fetchCar(ticket);
+        Car car1=stupidParkingBoy.fetchCar(ticket1);
+        //then
+        Assertions.assertNull(car);
+        Assertions.assertNull(car1);
+    }
+
+    @Test
+    void should_return_null_when_fetch_car_given_stupid_parking_boy_a_used_ticket(){
+        //given
+        StupidParkingBoy stupidParkingBoy=new StupidParkingBoy();
+        Ticket ticket=stupidParkingBoy.parkCar(new Car("car001"),"001");
+        //when
+        Car car=stupidParkingBoy.fetchCar(ticket);
+        car=stupidParkingBoy.fetchCar(ticket);
+        //then
+        Assertions.assertNull(car);
+    }
+
+    @Test
+    void should_return_null_when_parking_car_and_no_position_given_stupid_parking_boy_a_car(){
+        //given
+        Car car=new Car("car001");
+        StupidParkingBoy stupidParkingBoy=new StupidParkingBoy();
+        //when
+        stupidParkingBoy.setPosition(10);
+        Ticket ticket=stupidParkingBoy.parkCar(car,"001");
+        //then
+        Assertions.assertNull(ticket);
+    }
+
+    @Test
+    void should_return_null_when_parking_a_car_given_stupid_parking_boy_a_parked_car(){
+        //given
+        Car car=new Car("car001");
+        StupidParkingBoy stupidParkingBoy=new StupidParkingBoy();
+        //when
+        Ticket ticket=stupidParkingBoy.parkCar(car,"001");
+        Car car1=new Car("car001");
+        Ticket ticket1=stupidParkingBoy.parkCar(car1,"002");
+        //then
+        Assertions.assertNull(ticket1);
+    }
+
+    @Test
+    void should_provide_error_message_when_fetch_car_given_stupid_parking_boy_a_wrong_ticket(){
+        //given
+        StupidParkingBoy stupidParkingBoy=new StupidParkingBoy();
+        Ticket ticket=stupidParkingBoy.parkCar(new Car("car001"),"001");
+        Ticket ticket1=new Ticket("002","car002");
+        Customer customer=new Customer(ticket,stupidParkingBoy);
+        Customer customer1=new Customer(ticket1,stupidParkingBoy);
+        //when
+        Car car=stupidParkingBoy.fetchCar(ticket);
+        car=stupidParkingBoy.fetchCar(ticket);
+        Car car1=stupidParkingBoy.fetchCar(ticket1);
+        //then
+        Assertions.assertEquals("Unrecognized parking ticket.",customer.getMessage());
+        Assertions.assertEquals("Unrecognized parking ticket.",customer1.getMessage());
+    }
+
+    @Test
+    void should_provide_error_message_when_fetch_car_given_stupid_boy_no_ticket(){
+        //given
+        StupidParkingBoy stupidParkingBoy=new StupidParkingBoy();
+        Ticket ticket=null;
+        Customer customer=new Customer(ticket,stupidParkingBoy);
+        //when
+        Car car=stupidParkingBoy.fetchCar(ticket);
+        car=stupidParkingBoy.fetchCar(ticket);
         //then
         Assertions.assertEquals("Please provide your parking ticket.",customer.getMessage());
     }
 
     @Test
-    void should_provide_error_message_when_parking_car_given_no_position(){
+    void should_provide_error_message_when_parking_car_given_stupid_boy_no_position(){
         //given
-        ParkingBoy parkingBoy=new ParkingBoy();
-        parkingBoy.setPosition(10);
+        StupidParkingBoy stupidParkingBoy=new StupidParkingBoy();
+        stupidParkingBoy.setPosition(10);
         //when
-        Ticket ticket=parkingBoy.parkCar(new Car("car001"),"001");
-        Customer customer=new Customer(ticket,parkingBoy);
+        Ticket ticket=stupidParkingBoy.parkCar(new Car("car001"),"001");
+        Customer customer=new Customer(ticket,stupidParkingBoy);
         //then
         Assertions.assertEquals("Not enough position.",customer.getMessage());
     }
@@ -152,13 +242,13 @@ class ParkingBoyFacts {
         //given
         SuperParkingBoy superParkingBoy=new SuperParkingBoy();
         Car car=new Car("car001");
-        superParkingBoy.addParkingLots("lot002",5);
-        superParkingBoy.addParkingLots("lot001",3);
-        superParkingBoy.addParkingLots("lot003",1);
+        superParkingBoy.addParkingLots("lot002",5,10);
+        superParkingBoy.addParkingLots("lot001",3,5);
+        superParkingBoy.addParkingLots("lot003",1,2);
         //when
         String parkingLotsId=superParkingBoy.parkTheCar(car,"001").getParkingLotId();
         //then
-        Assertions.assertEquals("lot003",parkingLotsId);
+        Assertions.assertEquals("lot002",parkingLotsId);
     }
 
 }
