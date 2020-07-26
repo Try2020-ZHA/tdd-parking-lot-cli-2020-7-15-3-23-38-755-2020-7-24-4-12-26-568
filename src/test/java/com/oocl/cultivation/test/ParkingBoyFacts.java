@@ -133,4 +133,17 @@ class ParkingBoyFacts {
         Assertions.assertEquals("lot002",parkingLotsId);
     }
 
+    @Test
+    void should_return_first_parking_lot_when_park_a_car_given_clever_parking_boy(){
+        //given
+        StupidParkingBoy stupidParkingBoy=new StupidParkingBoy();
+        Car car=new Car("car001");
+        stupidParkingBoy.addParkingLots("lot002",5);
+        stupidParkingBoy.addParkingLots("lot001",3);
+        //when
+        String parkingLotsId=stupidParkingBoy.parkTheCar(car,"001").getParkingLotId();
+        //then
+        Assertions.assertEquals("lot001",parkingLotsId);
+    }
+
 }
