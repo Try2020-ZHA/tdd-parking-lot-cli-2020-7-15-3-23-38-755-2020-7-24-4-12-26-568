@@ -136,14 +136,15 @@ class ParkingBoyFacts {
     @Test
     void should_return_first_parking_lot_when_park_a_car_given_clever_parking_boy(){
         //given
-        StupidParkingBoy stupidParkingBoy=new StupidParkingBoy();
+        CleverParkingBoy cleverParkingBoy=new CleverParkingBoy();
         Car car=new Car("car001");
-        stupidParkingBoy.addParkingLots("lot002",5);
-        stupidParkingBoy.addParkingLots("lot001",3);
+        cleverParkingBoy.addParkingLots("lot002",5);
+        cleverParkingBoy.addParkingLots("lot001",3);
+        cleverParkingBoy.addParkingLots("lot003",1);
         //when
-        String parkingLotsId=stupidParkingBoy.parkTheCar(car,"001").getParkingLotId();
+        String parkingLotsId=cleverParkingBoy.parkTheCar(car,"001").getParkingLotId();
         //then
-        Assertions.assertEquals("lot001",parkingLotsId);
+        Assertions.assertEquals("lot003",parkingLotsId);
     }
 
 }
