@@ -125,10 +125,12 @@ class ParkingBoyFacts {
         //given
         StupidParkingBoy stupidParkingBoy=new StupidParkingBoy();
         Car car=new Car("car001");
+        stupidParkingBoy.addParkingLots("lot002",5);
+        stupidParkingBoy.addParkingLots("lot001",3);
         //when
-        String parkingLotsId=stupidParkingBoy.parkCar(car,"001").getLotsNumber();
+        String parkingLotsId=stupidParkingBoy.parkTheCar(car,"001").getParkingLotId();
         //then
-        Assertions.assertEquals("001",parkingLotsId);
+        Assertions.assertEquals("lot002",parkingLotsId);
     }
 
 }

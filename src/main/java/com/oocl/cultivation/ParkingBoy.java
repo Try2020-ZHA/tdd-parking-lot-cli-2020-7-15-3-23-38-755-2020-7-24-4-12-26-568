@@ -5,10 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ParkingBoy {
-    private int position;
-    private HashMap<String,Car> ticketAndCar;
+    protected int position;
+    protected HashMap<String,Car> ticketAndCar;
     private List<Customer> customers ;
-    private List<Ticket> tickets ;
+    protected List<Ticket> tickets ;
     public ParkingBoy(){
         ticketAndCar=new HashMap<>();
         customers=new ArrayList<Customer>();
