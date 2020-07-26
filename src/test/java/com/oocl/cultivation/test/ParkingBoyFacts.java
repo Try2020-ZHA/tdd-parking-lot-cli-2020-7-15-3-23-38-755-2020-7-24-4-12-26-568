@@ -1,9 +1,6 @@
 package com.oocl.cultivation.test;
 
-import com.oocl.cultivation.Car;
-import com.oocl.cultivation.Customer;
-import com.oocl.cultivation.ParkingBoy;
-import com.oocl.cultivation.Ticket;
+import com.oocl.cultivation.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -121,6 +118,17 @@ class ParkingBoyFacts {
         Customer customer=new Customer(ticket,parkingBoy);
         //then
         Assertions.assertEquals("Not enough position.",customer.getMessage());
+    }
+
+    @Test
+    void should_return_first_parking_lot_when_park_a_car_given_stupid_parking_boy(){
+        //given
+        StupidParkingBoy stupidParkingBoy=new StupidParkingBoy();
+        Car car=new Car("car001");
+        //when
+        String parkingLotsId=stupidParkingBoy.parkCar(car,"001").getLotsNumber();
+        //then
+        Assertions.assertEquals("001",parkingLotsId);
     }
 
 }

@@ -65,7 +65,9 @@ AC2: All the requirement in *Story 1* and *Story
 
 ## Story 4
 
-As a parking lots service manager. I would like to have another kind of parking boy to help me parking cars to multiple parking lots. So that the parking positions can be better used.
+As a parking lots service manager. I would like to have another kind of 
+parking boy to help me parking cars to multiple parking lots. So that
+ the parking positions can be better used.
 
 The new kind of parking boy is called **SMART PARKING BOY**.
 
