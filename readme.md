@@ -77,11 +77,17 @@ AC2: All the requirement in *Story 1* and *Story 2* **MUST** be satisfied.
 
 ## Story 5
 
-As a parking lots service manager, I would like to have another kind of parking boy to help me parking cars to multiple parking lots so that the parking positions can be better used.
+As a parking lots service manager, I would like 
+to have another kind of parking boy to help me 
+parking cars to multiple parking lots so that the 
+parking positions can be better used.
 
-The new kind of parking boy is called **SUPER SMART PARKING BOY**.
+The new kind of parking boy is called 
+**SUPER SMART PARKING BOY**.
 
-AC1. The super smart parking boy will always park cars to the parking lot which has a larger available position rate (*positions available* / *total capacity*).
+AC1. The super smart parking boy will always 
+park cars to the parking lot which has a larger 
+available position rate (*positions available* / *total capacity*).
 
 AC2: All the requirement in *Story 1* and *Story 2* **MUST** be satisfied.
 

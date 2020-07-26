@@ -134,7 +134,7 @@ class ParkingBoyFacts {
     }
 
     @Test
-    void should_return_first_parking_lot_when_park_a_car_given_clever_parking_boy(){
+    void should_return_fewer_contain_parking_lot_when_park_a_car_given_clever_parking_boy(){
         //given
         CleverParkingBoy cleverParkingBoy=new CleverParkingBoy();
         Car car=new Car("car001");
@@ -143,6 +143,20 @@ class ParkingBoyFacts {
         cleverParkingBoy.addParkingLots("lot003",1);
         //when
         String parkingLotsId=cleverParkingBoy.parkTheCar(car,"001").getParkingLotId();
+        //then
+        Assertions.assertEquals("lot003",parkingLotsId);
+    }
+
+    @Test
+    void should_return_large_available_rate_parking_lot_when_park_a_car_given_super_parking_boy(){
+        //given
+        SuperParkingBoy superParkingBoy=new SuperParkingBoy();
+        Car car=new Car("car001");
+        superParkingBoy.addParkingLots("lot002",5);
+        superParkingBoy.addParkingLots("lot001",3);
+        superParkingBoy.addParkingLots("lot003",1);
+        //when
+        String parkingLotsId=superParkingBoy.parkTheCar(car,"001").getParkingLotId();
         //then
         Assertions.assertEquals("lot003",parkingLotsId);
     }

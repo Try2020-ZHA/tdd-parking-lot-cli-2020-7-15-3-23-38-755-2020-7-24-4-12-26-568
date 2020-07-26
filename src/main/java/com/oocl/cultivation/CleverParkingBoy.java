@@ -4,7 +4,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
-public class CleverParkingBoy extends ParkingBoy {private HashMap<String, Integer> parkingLots;
+public class CleverParkingBoy extends ParkingBoy {
+    private HashMap<String, Integer> parkingLots;
     public CleverParkingBoy(){
         parkingLots=new HashMap<>();
     }
